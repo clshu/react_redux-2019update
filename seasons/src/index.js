@@ -6,23 +6,37 @@ class App extends Component {
     constructor(props) {
         super(props)
         // The only time to use direct assinment
-        this.state = {latitude: null, longitude: null}
+        this.state = {
+            latitude: null,
+            longitude: null,
+            errorMessage: null
+        }
 
         window.navigator.geolocation.getCurrentPosition(
-            (position) => {
+            position => {
                 const {latitude, longitude} = position.coords
                 this.setState({latitude, longitude})
             },
-            err => console.log(err)
+            err => {
+                this.setState({errorMessage: err.message})
+            }
         )
     }
     render() {
-        return (
+        const {latitude, longitude, errorMessage} = this.state
+        if (errorMessage && !latitude && !longitude) {
+            return <div>Error: {errorMessage}</div>
+        }
+        if (!errorMessage && latitude && longitude) {
+            return (
             <div>
                 <p>Latitude: {this.state.latitude}</p>
                 <p>Longitude: {this.state.longitude}</p>
             </div>
-        )
+            )
+        }
+
+        return <div>Loading...</div>
     }
 }
 
