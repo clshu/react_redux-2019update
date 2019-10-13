@@ -13,9 +13,12 @@ const seasonConfig = {
 }
 function getSeason(latitude, month) {
     if (month > 2 && month < 9) {
-        // Ap
+        // April to September, Northern atmosphere is summer
+        // and Southern atmosphere is winter
         return latitude > 0 ? "summer" : "winter"
     } else {
+        // October to March, Northern atmosphere is winter
+        // and Southern atmosphere is summer
         return latitude > 0 ? "winter" : "summer"
     }
 }
