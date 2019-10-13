@@ -20,7 +20,7 @@ class App extends Component {
             }
         )
     }
-    render() {
+    rederContent() {
         const {latitude, longitude, errorMessage} = this.state
         if (errorMessage && !latitude && !longitude) {
             return <div>Error: {errorMessage}</div>
@@ -31,7 +31,15 @@ class App extends Component {
             )
         }
 
-        return <Spinner />
+        return <Spinner message="Please accept the location request"/>
+    }
+    render() {
+        return (
+            // A fake class to show a wrapper
+        <div className="border red">
+            {this.rederContent()}
+        </div>
+        )
     }
 }
 
