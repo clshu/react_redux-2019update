@@ -3,14 +3,10 @@ import ReactDOM from 'react-dom'
 
 
 class App extends Component {
-    constructor(props) {
-        super(props)
-        // The only time to use direct assinment
-        this.state = {
-            latitude: null,
-            longitude: null,
-            errorMessage: null
-        }
+    state = {
+        latitude: null,
+        longitude: null,
+        errorMessage: null
     }
     componentDidMount() {
         window.navigator.geolocation.getCurrentPosition(
