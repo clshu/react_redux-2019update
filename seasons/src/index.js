@@ -5,8 +5,9 @@ import ReactDOM from 'react-dom'
 class App extends Component {
     constructor(props) {
         super(props)
-        this.state = {latitude: 0, longitude: 0}
-        
+        // The only time to use direct assinment
+        this.state = {latitude: null, longitude: null}
+
         window.navigator.geolocation.getCurrentPosition(
             (position) => {
                 const {latitude, longitude} = position.coords
@@ -18,8 +19,8 @@ class App extends Component {
     render() {
         return (
             <div>
-                <p>Latitude:{this.state.latitude}</p>
-                <p>Longitude:{this.state.longitude}</p>
+                <p>Latitude: {this.state.latitude}</p>
+                <p>Longitude: {this.state.longitude}</p>
             </div>
         )
     }
