@@ -11,7 +11,8 @@ class App extends Component {
             longitude: null,
             errorMessage: null
         }
-
+    }
+    componentDidMount() {
         window.navigator.geolocation.getCurrentPosition(
             position => {
                 const {latitude, longitude} = position.coords
